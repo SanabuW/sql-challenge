@@ -1,0 +1,42 @@
+# Table for departments.csv
+# Build this table second
+departments as d
+----------
+dept_no VARCHAR[10] PK
+dept_name VARCHAR[50]
+
+# Table for dept_emp.csv
+dept_emp as de
+----------
+emp_no INTEGER PK FK >- e.emp_no
+dept_no VARCHAR[10] PK FK >- d.dept_no
+
+# Table for dept_manager.csv
+dept_manager as dm
+----------
+dept_no VARCHAR[10] PK FK >- d.dept_no
+emp_no INTEGER PK FK - e.emp_no
+
+# Table for employees.csv
+# Build this table first
+employees as e
+----------
+emp_no INTEGER PK 
+emp_title_id VARCHAR[10] FK >- t.title_id
+birth_date VARCHAR[20]
+first_name VARCHAR[30]
+last_name VARCHAR[30]
+sex VARCHAR[10]
+hire_date VARCHAR[20]
+
+# Table for salaries.csv
+salaries as s
+----------
+emp_no INTEGER PK FK - e.emp_no
+salary INTEGER 
+
+# Table for titles.csv
+titles as t
+----------
+title_id VARCHAR[10] PK
+title VARCHAR[30]
