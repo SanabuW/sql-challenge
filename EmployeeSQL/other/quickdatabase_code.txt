@@ -15,7 +15,7 @@ dept_no VARCHAR[10] PK FK >- d.dept_no
 dept_manager as dm
 ----------
 dept_no VARCHAR[10] PK FK >- d.dept_no
-emp_no INTEGER PK FK - e.emp_no
+emp_no INTEGER PK FK -< e.emp_no
 
 # Table for employees.csv
 # Build this table first
@@ -33,10 +33,11 @@ hire_date VARCHAR[20]
 salaries as s
 ----------
 emp_no INTEGER PK FK - e.emp_no
-salary INTEGER 
+salary INTEGER
 
 # Table for titles.csv
 titles as t
 ----------
 title_id VARCHAR[10] PK
 title VARCHAR[30]
+
