@@ -16,6 +16,7 @@ SELECT * FROM q1;
 SELECT COUNT (emp_no) FROM q1;
 -- 300,024 results
 
+
 -- 2. List first name, last name, and hire date for 
 -- employees who were hired in 1986.
 CREATE VIEW q2 AS(
@@ -26,6 +27,7 @@ CREATE VIEW q2 AS(
 SELECT * FROM q2;
 SELECT COUNT (first_name) FROM q2;
 -- 36,150 results
+
 
 -- 3. List the manager of each department with the following information: 
 -- department number, department name, the manager's employee number, 
@@ -51,6 +53,7 @@ SELECT * FROM q3;
 SELECT COUNT (emp_no) FROM q3;
 -- 24 results
 
+
 -- 4. List the department of each employee with the following information: 
 -- employee number, last name, first name, and department name.
 CREATE VIEW q4 AS(
@@ -71,6 +74,7 @@ SELECT COUNT (emp_no) FROM q4;
 -- 331,603 results -- IS THIS CORRECT??? ( more results than employees) 
 -- YES, because an employee can belong to more than one dept
 
+
 -- 5. List first name, last name, and sex for employees whose first name 
 -- is "Hercules" and last names begin with "B."
 CREATE VIEW q5 AS(
@@ -83,14 +87,58 @@ CREATE VIEW q5 AS(
 SELECT * FROM q5;
 -- 20 results
 
+
 -- 6. List all employees in the Sales department, including their 
 -- employee number, last name, first name, and department name.
+CREATE VIEW q6 AS(
+	SELECT emp_no, last_name, first_name, dept_name FROM q4
+	WHERE dept_name = 'Sales'
+);
+SELECT * FROM q6;
+SELECT COUNT(emp_no) FROM q6;
+-- 52,245 results
 
 
 -- 7. List all employees in the Sales and Development departments, 
 -- including their employee number, last name, first name, and department name.
+CREATE VIEW q7 AS(
+	SELECT emp_no, last_name, first_name, dept_name FROM q4
+	WHERE dept_name = 'Sales' OR
+	dept_name = 'Development'
+);
+SELECT * FROM q7;
+SELECT COUNT(emp_no) FROM q7;
+-- 137,952 results
 
 
 -- 8. In descending order, list the frequency count of employee last names, 
 -- i.e., how many employees share each last name.
+CREATE VIEW q8 AS(
+	SELECT last_name, count(last_name) AS name_count
+	FROM employees
+	GROUP BY last_name
+	ORDER BY name_count DESC
+);
 
+SELECT * FROM q8;
+SELECT COUNT(last_name) FROM q8;
+-- 1,638
+--order results: Baba: 226, Gelosh 223, Coorg 223, Farris 222...
+
+SELECT * FROM q1;
+
+-- creating view for easy access in python for bonus
+CREATE VIEW qb AS (
+	WITH sal_dpt AS (
+		SELECT q1.*, de.dept_no
+		FROM q1
+		LEFT JOIN dept_emp AS de ON
+		q1.emp_no = de.emp_no
+	)
+	SELECT sal_dpt.*, d.dept_name
+	FROM sal_dpt
+	LEFT JOIN departments AS d ON
+	sal_dpt.dept_no = d.dept_no
+);
+
+SELECT * FROM qb;
