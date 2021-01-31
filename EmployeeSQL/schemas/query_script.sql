@@ -129,16 +129,19 @@ SELECT * FROM q1;
 
 -- creating view for easy access in python for bonus
 CREATE VIEW qb AS (
-	WITH sal_dpt AS (
-		SELECT q1.*, de.dept_no
-		FROM q1
-		LEFT JOIN dept_emp AS de ON
-		q1.emp_no = de.emp_no
+	WITH sal_emp AS (
+		SELECT e.*, t.title
+		FROM employees as e
+		LEFT JOIN titles AS t ON
+		e.emp_title_id = t.title_id
 	)
-	SELECT sal_dpt.*, d.dept_name
-	FROM sal_dpt
-	LEFT JOIN departments AS d ON
-	sal_dpt.dept_no = d.dept_no
+	SELECT sal_emp.*, s.salary
+	FROM sal_emp
+	LEFT JOIN salaries AS s ON
+	sal_emp.emp_no = s.emp_no
 );
 
 SELECT * FROM qb;
+
+
+
