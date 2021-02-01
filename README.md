@@ -16,7 +16,7 @@ This repository is for the sql assignment for the UCSD Data Bootcamp using postg
 ### bonus
 -Holds the files required for the bonus
 
-*Note: bonus.ipynb references a file that contains a password. The password is not available on the public gitHub
+*Note: bonus.ipynb references a file that contains a password. The password is not available on the public GitHub
 
 ### data
 -Holds the csv files for the original data
