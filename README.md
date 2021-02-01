@@ -3,13 +3,13 @@ UCSD Section 9 sql-challenge Homework
 
 ## Project Overview
 This repository is for the sql assignment for the UCSD Data Bootcamp using postgreSQL. The assignment covers the following concepts:
--Creating tables
--Defining key constraints
--ERD creation
--Importing csv files to populate tables
--Subqueries
--Joins
--Querying through python
+- Creating tables
+- Defining key constraints
+- ERD creation
+- Importing csv files to populate tables
+- Subqueries
+- Joins
+- Querying through python
 
 ## File Overview
 
