@@ -6,7 +6,7 @@
 -- 1. List the following details of each employee: 
 -- employee number, last name, first name, sex, and salary.
 CREATE VIEW q1 AS(
-	SELECT e.emp_no, e.first_name, e.last_name, e.sex, s.salary
+	SELECT e.emp_no, e.last_name, e.first_name, e.sex, s.salary
 	FROM employees AS e
 	LEFT JOIN salaries AS s ON
 	e.emp_no = s.emp_no
@@ -63,7 +63,7 @@ WITH ei AS (
 	LEFT JOIN dept_emp AS de ON
 	e.emp_no = de.emp_no
 )
-SELECT ei.*, d.dept_name
+SELECT ei.emp_no, ei.last_name,  ei.first_name, d.dept_name
 FROM ei
 LEFT JOIN departments AS d ON
 ei.dept_no = d.dept_no
@@ -123,7 +123,7 @@ CREATE VIEW q8 AS(
 SELECT * FROM q8;
 SELECT COUNT(last_name) FROM q8;
 -- 1,638
---order results: Baba: 226, Gelosh 223, Coorg 223, Farris 222...
+-- order results: Baba: 226, Gelosh 223, Coorg 223, Farris 222...
 
 SELECT * FROM q1;
 

@@ -68,7 +68,7 @@ CREATE TABLE salaries (
 
 -----------------------------------------------
 --SET KEYS
--- --Build these tables first (due to foreign key dependencies)
+-- Build these tables first (due to foreign key dependencies)
 -- titles - NO FKs
 -- departments - NO FKs
 
